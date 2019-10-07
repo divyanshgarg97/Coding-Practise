@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Disjoint_set{
+    unordered_map<int , int > parent;
+    public: 
+    void makeset( vector<int> & v){
+        for( auto i : v) {
+            parent[i] = i; 
+        }
+    }
+    int find( int i ) {
+        if( parent[i] ==i)
+            return i ;
+        return find(parent[i]);
+    }
+    void unions( int x, int y ) {
+        int a = find( x) ;
+        int b = find( y ) ;
+        parent[a] = b;
+    }
+};
+void printallsets(vector<int> &v, Disjoint_set ds){
+    for(auto i : v ) {
+        cout<<ds.find(i ) << " ";
+    }
+    cout<< "\n";
+    
+}
+int main() {
+    Disjoint_set dset;
+    vector<int> v = { 1, 2 ,3, 4, 5};
+    dset.makeset(v) ;
+	printallsets(v, dset);
+	dset.unions(4, 3);
+	printallsets(v, dset);
+	dset.unions(2, 1);
+	printallsets(v, dset);
+	dset.unions(1, 3);
+	printallsets(v, dset);
+	return 0;
+}
