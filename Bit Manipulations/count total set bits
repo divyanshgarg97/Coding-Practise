@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+int setbits( int n ) {
+    int i = 0 ;
+    while( n ) {
+        int lastbit = n & 1;
+        if( lastbit == 1){
+            i++;
+        }
+        n= n >>1;
+    }
+    return i ;
+}
+
+int main() {
+	//code
+	int t;
+	cin>>t;
+	while(t--){
+	    int n;
+	    cin>>n;
+	    int ans = 0 ;
+	    for( int i = 1 ;i<= n;i++){
+	        ans = ans + setbits( i ) ;
+	    }
+	    cout<< ans<< "\n";
+	}
+	return 0;
+}
