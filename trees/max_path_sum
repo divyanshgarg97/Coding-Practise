@@ -1,0 +1,38 @@
+void inorder( Node* root, int &ans);
+int maxPathSum2( struct Node * root);
+int sum( Node * root);
+int maxPathSum(struct Node *root)
+{
+    if( root == NULL ) return 0 ;
+    int left = sum( root->left) ;
+    int right = sum ( root->right) ;
+    int ans1 = maxPathSum( root->left) ;
+    int ans2= maxPathSum( root->right) ;
+    return max(max( left + right + root->data , ans1 ) , ans2);
+}
+int sum( Node* root) {
+    if( root== NULL) return 0 ;
+    int left = sum ( root->left ) ;
+    int right = sum ( root->right);
+    return left> right? left + root->data :right + root->data;
+}
+/*
+if( root == NULL) return 0;
+    //vector<int > v;
+    int ans = INT_MIN;
+    inorder( root,ans);
+    return ans ;
+}
+int maxPathSum2( struct Node* root) {
+    if( root == NULL) return 0 ;
+    int l = maxPathSum2( root->left) ;
+    int r = maxPathSum2( root->right);
+    return ( l > r? l : r ) + root->data;
+}
+void inorder( Node * root , int &ans){
+    if( root== NULL) return ;
+    inorder( root->left,ans) ;
+    int a = maxPathSum2( root);
+    if( a > ans ) ans = a;
+    inorder( root->right, ans ) ;
+}*/
