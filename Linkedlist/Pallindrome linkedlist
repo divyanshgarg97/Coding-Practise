@@ -1,0 +1,63 @@
+class Solution {
+public:
+    ListNode * reverselist(ListNode * head){
+        ListNode * prev = NULL; 
+        ListNode * curr = head;
+        ListNode * temp ;
+        while(curr){
+            temp = curr->next; 
+            curr->next = prev; 
+            prev = curr; 
+            curr = temp;
+        }
+        return prev;
+    }
+    bool isPalindrome(ListNode* head) {
+        //approach 1:-reverse second half 
+        if( head == NULL || head->next == NULL) 
+            return true;
+        ListNode * slow = head; 
+        ListNode * fast = head; 
+        while( fast->next && fast->next->next){
+            slow = slow->next; 
+            fast = fast->next->next;
+        }
+            ListNode * list2 = reverselist(slow->next);
+            ListNode * temp2 = head;
+            while(list2!=NULL) {
+                if( temp2->val!=list2->val)
+                    return false;
+                else{
+                    temp2 = temp2->next;
+                    list2= list2->next;
+                }
+            }
+            return true;
+        
+    }
+        /*
+        //approch 2:- use some map to store previous address for every node
+        if( head == NULL || head->next == NULL ) return true;
+        unordered_map< ListNode * , ListNode * > parent; 
+        ListNode * temp = head; 
+        ListNode * prev = NULL;
+        while( temp->next!=NULL) {
+            parent[temp] = prev; 
+            prev = temp ; 
+            temp = temp->next; 
+        }
+        parent[temp] = prev; 
+        //now temp is at last node 
+        ListNode * temp1 = head; 
+        while(temp1!=NULL){
+            if( temp1->val == temp->val){
+                temp1= temp1->next; 
+                temp = parent[temp];
+            }   
+            else{
+                return false;
+            }
+        }
+        return true;
+    }*/
+};
