@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std; 
+int gcd(int a,int b) {
+    if( b == 0) 
+        return a;
+    else gcd(b, a % b ) ; 
+}
+int main() {
+    int n;
+    cin>>n;int A[n];
+    for( int i =0 ; i < n;i++ ) cin>> A[i];
+    int maxval = A[0];
+    int g = A[0];
+    for( int i =1 ; i < n;i++){
+        g = gcd(g , A[i]);
+        if( maxval < A[i]){
+            maxval = A[i];
+        }
+    }
+    //cout<< "gcd" << g;
+    int totcase;
+    totcase= maxval/ g - n;
+    //cout<< totcase; 
+    if( totcase % 2 == 0)
+        cout<< "Bob" <<"\n";
+    else 
+        cout<< "Alice"<<"\n";
+    
+}
