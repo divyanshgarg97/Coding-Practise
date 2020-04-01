@@ -1,0 +1,59 @@
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        /*Using inbuilt sort
+        time complexity:-n*l*logl
+        int n = strs.size();
+        string temp;
+        unordered_map<string, vector<string> > ump;
+        for( int i = 0 ; i < n; i++ ) {// O(n*l*log(l))
+            temp = strs[i]; 
+            sort(temp.begin(), temp.end()); // time:-O(llogl)
+            ump[temp].push_back(strs[i]);
+        }    
+        vector<vector<string> > ans;
+        //vector<string> anstemp;
+        for( auto i : ump){
+            //anstemp = i.second;
+            //sort(anstemp.begin(), anstemp.end());
+            //ans.push_back(anstemp);
+            ans.push_back(i.second);
+        }
+        return ans;
+        */
+        //Using counting sort
+        //time-n*l
+        int n = strs.size();
+        string temp;
+        unordered_map<string, vector<string> > ump;
+        for( int i = 0 ; i < n; i++ ) {
+            temp = strs[i]; 
+            temp = countsort(temp); 
+            ump[temp].push_back(strs[i]);
+        }    
+        vector<vector<string> > ans;
+        //vector<string> anstemp;
+        for( auto i : ump){
+            //anstemp = i.second;
+            //sort(anstemp.begin(), anstemp.end());
+            //ans.push_back(anstemp);
+            ans.push_back(i.second);
+        }
+        return ans;
+    }
+    string countsort(string str){
+        int count[26]={0};
+        for( auto i : str){
+            count[i- 'a']++;
+        }
+        string ans;
+        for( int i = 0 ; i < 26; i ++ ) {
+            int val = count[i];
+            while(val > 0 ){ 
+                ans = ans + (char)(i+'a');
+                val--;
+            }
+        }
+        return ans;
+    }
+};
