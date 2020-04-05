@@ -1,0 +1,25 @@
+class Solution {
+public:
+    /**
+     * @param gas: An array of integers
+     * @param cost: An array of integers
+     * @return: An integer
+     */
+    int canCompleteCircuit(vector<int> &gas, vector<int> &cost) {
+        int n = gas.size();
+        int start = 0 ; 
+        int end = 1; 
+        int curr = gas[start] - cost[start];
+        while( end !=start  || curr < 0){
+            while( curr < 0 && start !=end ) { // curr < 0 move start ,before it reach end
+                curr = curr -  gas[start] + cost[start]; //add all cost that were subtacted and subtract gas that was added
+                start = (start + 1) % n; // move start 
+                if( start == 0 ) 
+                    return -1;
+            }
+            curr = curr + gas[end] - cost[end]; 
+            end = (end + 1) % n; 
+        }
+        return start;
+    }
+};
