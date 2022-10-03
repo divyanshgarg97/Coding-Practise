@@ -1,0 +1,9 @@
+1.
+https://www.codechef.com/problems/DIVMAC
+good solution:-
+https://www.codechef.com/viewplaintext/11477145
+
+Learned about Analyzing what to store in a segment and increase things to store according to need.
+// was initially confused that asking for max LPD and updating on a[i] values, but actually that was easy nothing to worry about.
+
+2.

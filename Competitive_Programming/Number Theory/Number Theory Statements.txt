@@ -1,0 +1,12 @@
+1.
+Any number N can have Maximum of Log2(N) prime factors (including repeatitions).
+Why? 
+Least Prime Factor is 2 , if N = 2 * 2 * 2 * ... (all 2's) 
+then it will be log2(N) times 2 which is maximum as any number other than 2,
+in prime factorization like 3,5 will only reduce no. of prime factors(as dividing factor is greater than 2).
+
+2.
+https://www.codechef.com/problems/DIVMAC
+A number M divided by max of logM times and then become 1 if we divide it by its least prime divisor everytime.
+
+3.

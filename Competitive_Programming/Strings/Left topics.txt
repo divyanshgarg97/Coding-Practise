@@ -1,0 +1,3 @@
+Suffix array 
+Suffix tree
+Trie
